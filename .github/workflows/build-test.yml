@@ -1,0 +1,93 @@
+name: 'Build Test'
+on: # rebuild any PRs and main branch changes
+  pull_request:
+    paths:
+      - '.github/workflows/build-test.yml'
+      - 'src/**'
+      - 'types/**'
+      - '.eslint*'
+      - '*.json'
+      - '*.ts'
+      - '*.tsx'
+      - '*.js'
+      - 'serverless.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/build-test.yml'
+      - 'src/**'
+      - 'types/**'
+      - '.eslint*'
+      - '*.json'
+      - '*.ts'
+      - '*.tsx'
+      - '*.js'
+      - 'serverless.yml'
+
+jobs:
+  build: # make sure build/ci work properly
+    name: 'Build'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '14' ]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Node ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - run: rm -f .yarnclean
+      - run: yarn --frozen-lockfile
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+          HUSKY_SKIP_INSTALL: true
+
+      - run: yarn build
+
+  eslint:
+    name: 'Eslint'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '14' ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - run: rm -f .yarnclean
+      - run: yarn --frozen-lockfile
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+          HUSKY_SKIP_INSTALL: true
+
+      - run: yarn lint
