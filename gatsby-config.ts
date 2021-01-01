@@ -43,6 +43,12 @@ export const plugins = [
     },
   },
   {
+    resolve: `gatsby-plugin-google-analytics`,
+    options: {
+      trackingId: 'G-ZVJDVHG09E',
+    },
+  },
+  {
     resolve: `gatsby-plugin-typescript`,
     options: {
       isTSX: true, // defaults to false
