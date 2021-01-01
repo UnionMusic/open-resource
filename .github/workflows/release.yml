@@ -6,10 +6,13 @@ on:
       - main
     paths:
       - '.github/workflows/release.yml'
-      - '!.github'
-      - '!.editorconfig'
-      - '!**.md'
-      - '!CODEOWNERS'
+      - 'src/**'
+      - 'types/**'
+      - '*.json'
+      - '*.ts'
+      - '*.tsx'
+      - '*.js'
+      - 'serverless.yml'
   workflow_dispatch:
     inputs:
       version:
