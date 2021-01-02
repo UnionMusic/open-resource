@@ -1,0 +1,23 @@
+# Type(<scope>): <subject>
+
+# <body>
+
+# <footer>
+
+# type 字段包含:
+# feat: feature - 所有实现新功能、新行为的 commit 都属这个类型
+# fix: 修正缺陷的 commit
+# chore: 构建过程或辅助工具的变动 包括但不限于文档、代码生成等）
+# test: 与测试有关的改动
+# refactor: 重构代码，理论上不影响现有功能（即不是新增功能，也不是修改bug的代码变动）
+# style: 对代码风格的修正（仅限缩进、空行一类的简单改动，对结构有影响的用 refactor
+# cosm: cosmetic - 不改变行为的对界面的纯视觉上的改动
+# docs: 对文档的改进，包括对外文档和代码注释
+# build: 和构建流程、持续集成等有关的改动
+
+# scope 用于说明 commit 影响的范围, 比如数据层 控制层 视图层等等.
+# subject 用一句话清楚的描述这次提交做了什么, 不超过50个字符
+# Body 部分是对本次 commit 的详细描述 补充 subject, 可以分成多行, 适当增加原因 目的等相关因素, 也可不写。
+# Footer 当有非兼容修改(Breaking Change)时必须在这里描述清楚
+#       关联相关 issue，如 Closes #1, Closes #2, #3 或以 BREAKING CHANGE 开头，
+#       后面是对变动的描述、以及变动理由和迁移方法
