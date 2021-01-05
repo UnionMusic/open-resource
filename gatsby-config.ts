@@ -43,9 +43,9 @@ export const plugins = [
     },
   },
   {
-    resolve: `gatsby-plugin-google-analytics`,
+    resolve: `gatsby-plugin-google-gtag`,
     options: {
-      trackingId: 'G-ZVJDVHG09E',
+      trackingIds: ['G-ZVJDVHG09E'],
     },
   },
   {
