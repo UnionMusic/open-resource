@@ -49,6 +49,14 @@ export const plugins = [
     },
   },
   {
+    resolve: `@sentry/gatsby`,
+    options: {
+      dsn: `https://b6c2323e58c049de8b06cdefcc0ec0fb@o343549.ingest.sentry.io/5579819`,
+      autoSessionTracking: true,
+      sampleRate: 0.7,
+    },
+  },
+  {
     resolve: `gatsby-plugin-typescript`,
     options: {
       isTSX: true, // defaults to false
