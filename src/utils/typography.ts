@@ -1,5 +1,5 @@
 import Typography from 'typography';
-import Theme from 'typography-theme-github';
+import Theme from 'typography-theme-moraga';
 
 Theme.bodyFontFamily = [
   '-apple-system',
