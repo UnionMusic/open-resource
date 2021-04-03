@@ -3,7 +3,7 @@ import {graphql} from 'gatsby';
 import Helmet from 'react-helmet';
 
 import Layout from '../components/layout';
-import styles from './article.css';
+import styles from './article.module.css';
 
 interface Props {
   readonly data: PageQueryData;
