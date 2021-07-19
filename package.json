@@ -35,7 +35,7 @@
     "typography-theme-moraga": "^0.16.19"
   },
   "devDependencies": {
-    "@types/node": "^16.3.1",
+    "@types/node": "^16.3.3",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "@types/react-helmet": "^6.1.2",
