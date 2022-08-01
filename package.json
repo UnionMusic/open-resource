@@ -14,7 +14,7 @@
     "lint": "eslint . --ext ts --ext tsx --fix"
   },
   "dependencies": {
-    "@sentry/gatsby": "^6.19.2",
+    "@sentry/gatsby": "^7.8.0",
     "gatsby": "^2.32.13",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-google-gtag": "^2.8.0",
